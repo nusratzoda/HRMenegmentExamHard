@@ -4,7 +4,7 @@ using Services.DataContext;
 
 namespace Infrastructure.Services;
 
-public class EmployeeService
+public class EmployeeService : IEmployeeServices
 {
     private DataContext _context;
 

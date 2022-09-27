@@ -7,8 +7,8 @@ namespace WebApi.Controllers;
 [Route("[controller]")]
 public class EmployeeController
 {
-    private EmployeeService _employeeService;
-    public EmployeeController(EmployeeService employee)
+    private IEmployeeServices _employeeService;
+    public EmployeeController(IEmployeeServices employee)
     {
         _employeeService = employee;
     }

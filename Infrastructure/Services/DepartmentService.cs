@@ -1,11 +1,11 @@
 using Dapper;
 using Domain;
-using Npgsql;
+using Services;
 using Services.DataContext;
 
 namespace Infrastructure.Services;
 
-public class DepartmentService
+public class DepartmentService : IDepartMentServices
 {
     private DataContext _context;
 

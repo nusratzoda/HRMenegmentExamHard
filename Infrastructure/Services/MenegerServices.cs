@@ -3,8 +3,7 @@ using Domain;
 using Services.DataContext;
 
 namespace Infrastructure.Services;
-
-public class MenegerServices
+public class MenegerServices : IManagerService
 {
     private DataContext _context;
 
@@ -25,7 +24,7 @@ public class MenegerServices
         {
             try
             {
-                var sql = $"INSERT into department_manager(EmployeeId,DepartmentId,FromDate,ToDate,CurrentDepartment)VALUES('{(int)M.EmployeeId}','{(int)M.DepartmentId}','{M.FromDate}','{M.ToDate}','{M.CurrentDepartment}')";
+                var sql = $"INSERT into department_manager(EmployeeId,DepartmentId,FromDate,ToDate,CurrentDepartment) VALUES ({(int)M.EmployeeId},{(int)M.DepartmentId},'{M.FromDate}','{M.ToDate}','{M.CurrentDepartment}')";
                 var id = await connection.ExecuteScalarAsync<int>(sql);
                 M.DepartmentId = id;
                 return new Response<department_manager>(M);

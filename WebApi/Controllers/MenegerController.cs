@@ -6,8 +6,8 @@ namespace WebApi.Controllers;
 
 public class MenegerController
 {
-    private MenegerServices _menegereService;
-    public MenegerController(MenegerServices meneger)
+    private IManagerService _menegereService;
+    public MenegerController(IManagerService meneger)
     {
         _menegereService = meneger;
     }

@@ -1,14 +1,15 @@
 using Domain;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
+using Services;
 
 namespace WebApi.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class DepartmentControler
 {
-    private DepartmentService _departmentService;
-    public DepartmentControler(DepartmentService department)
+    private IDepartMentServices _departmentService;
+    public DepartmentControler(IDepartMentServices department)
     {
         _departmentService = department;
     }

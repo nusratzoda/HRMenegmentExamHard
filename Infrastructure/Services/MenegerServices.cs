@@ -16,7 +16,7 @@ public class MenegerServices
     {
         await using var connection = _context.CreateConnection();
 
-        var response = await connection.QueryAsync<department_manager>($"select EmployeeId,DepartmentId  concat('FirstName',' ','LastName' ) as FullName from department_manager as d  INNER JOIN department_employee ON department_employee.departmentid = d.id GROUP BY d.id, d.name;");
+        var response = await connection.QueryAsync<department_manager>($"SELECT department.Id , department.Name , employee.Id as Managerid, CONCAT(FirstName,' ',LastName) as ManagerFullName FROM department JOIN department_employee ON department.id = department_employee.departmentid JOIN employee ON department_employee.employeeid = employee.id;");
         return new Response<List<department_manager>>(response.ToList());
     }
     public async Task<Response<department_manager>> AddMeneger(department_manager M)
@@ -25,7 +25,7 @@ public class MenegerServices
         {
             try
             {
-                var sql = $"INSERT into department_manager(EmployeeId,DepartmentId,FromDate,ToDate,CurrentDepartment)VALUES('{M.EmployeeId}','{M.DepartmentId}','{M.FromDate}','{M.ToDate}','{M.CurrentDepartment}')";
+                var sql = $"INSERT into department_manager(EmployeeId,DepartmentId,FromDate,ToDate,CurrentDepartment)VALUES('{(int)M.EmployeeId}','{(int)M.DepartmentId}','{M.FromDate}','{M.ToDate}','{M.CurrentDepartment}')";
                 var id = await connection.ExecuteScalarAsync<int>(sql);
                 M.DepartmentId = id;
                 return new Response<department_manager>(M);

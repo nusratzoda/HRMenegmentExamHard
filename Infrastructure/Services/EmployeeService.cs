@@ -16,14 +16,14 @@ public class EmployeeService
     {
         await using var connection = _context.CreateConnection();
 
-        var response = await connection.QueryAsync<employee>($"select d.id,d.name,  concat('FirstName',' ','LastName' ) as FullName from department as d  INNER JOIN department_employee ON department_employee.departmentid = d.id  INNER JOIN department_manager ON department_manager.departmentid = d.id GROUP BY d.id, d.name;");
+        var response = await connection.QueryAsync<employee>($"SELECT department.Id , department.Name , employee.Id as Managerid, CONCAT(FirstName,' ',LastName) as ManagerFullName FROM department JOIN department_employee ON department.id = department_employee.departmentid JOIN employee ON department_employee.employeeid = employee.id;");
         return new Response<List<employee>>(response.ToList());
     }
-    public async Task<Response<List<employee>>> GetEmployeeById()
+    public async Task<Response<List<employee>>> GetEmployeeById(int id)
     {
         await using var connection = _context.CreateConnection();
 
-        var response = await connection.QueryAsync<employee>($"select d.id,d.name,  concat('FirstName',' ','LastName' ) as FullName from department as d  INNER JOIN department_employee ON department_employee.departmentid = d.id  INNER JOIN department_manager ON department_manager.departmentid = d.id GROUP BY d.id, d.name;");
+        var response = await connection.QueryAsync<employee>($"SELECT department.Id, department.Name, employee.Id as Managerid, CONCAT(FirstName, ' ', LastName) as ManagerFullName FROM department JOIN department_employee ON department.id = department_employee.departmentid JOIN employee ON department_employee.employeeid = employee.id   where department.Id ={id}; ");
         return new Response<List<employee>>(response.ToList());
     }
 

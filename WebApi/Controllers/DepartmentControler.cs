@@ -18,9 +18,9 @@ public class DepartmentControler
         return await _departmentService.GetDepartments();
     }
     [HttpGet("GetDepartmentsById")]
-    public async Task<Response<List<department>>> GetDepartmentsById()
+    public async Task<Response<List<department>>> GetDepartmentsById(int id)
     {
-        return await _departmentService.GetDepartmentById();
+        return await _departmentService.GetDepartmentById(id);
     }
 
     [HttpPost("ADDDepartment")]

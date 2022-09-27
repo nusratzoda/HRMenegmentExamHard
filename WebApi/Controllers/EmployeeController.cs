@@ -18,9 +18,9 @@ public class EmployeeController
         return await _employeeService.GetEmoloyee();
     }
     [HttpGet("GetDepartmentsById")]
-    public async Task<Response<List<employee>>> GetEmployeeById()
+    public async Task<Response<List<employee>>> GetEmployeeById(int id)
     {
-        return await _employeeService.GetEmployeeById();
+        return await _employeeService.GetEmployeeById(id);
     }
 
     [HttpPost("ADDEmployee")]

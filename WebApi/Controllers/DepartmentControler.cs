@@ -6,7 +6,7 @@ using Services;
 namespace WebApi.Controllers;
 [ApiController]
 [Route("[controller]")]
-public class DepartmentControler
+public class DepartmentControler : ControllerBase
 {
     private IDepartMentServices _departmentService;
     public DepartmentControler(IDepartMentServices department)

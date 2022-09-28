@@ -3,8 +3,9 @@ using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
-
-public class MenegerController
+[ApiController]
+[Route("[controller]")]
+public class MenegerController : ControllerBase
 {
     private IManagerService _menegereService;
     public MenegerController(IManagerService meneger)

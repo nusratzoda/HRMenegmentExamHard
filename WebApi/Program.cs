@@ -9,6 +9,7 @@ builder.Services.AddSingleton<DataContext>();
 builder.Services.AddScoped<IDepartMentServices, DepartmentService>();
 builder.Services.AddScoped<IEmployeeServices, EmployeeService>();
 builder.Services.AddScoped<IManagerService, MenegerServices>();
+builder.Services.AddScoped<IFileServices, FileServices>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

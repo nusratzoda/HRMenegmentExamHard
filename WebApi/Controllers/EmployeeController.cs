@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApi.Controllers;
 [ApiController]
 [Route("[controller]")]
-public class EmployeeController
+public class EmployeeController : ControllerBase
 {
     private IEmployeeServices _employeeService;
     public EmployeeController(IEmployeeServices employee)
